@@ -67,7 +67,7 @@ class _JoinScreenState extends State<JoinScreen> {
                       controller: TextEditingController(
                         text: widget.selfCallerId,
                       ),
-                      readOnly: true,
+                      // readOnly: true,
                       textAlign: TextAlign.center,
                       enableInteractiveSelection: false,
                       decoration: InputDecoration(

@@ -96,6 +96,7 @@ class _CallScreenState extends State<CallScreen> {
     if (widget.offer != null) {
       // listen for Remote IceCandidate
       socket!.on("IceCandidate", (data) {
+        print(data);
         String candidate = data["iceCandidate"]["candidate"];
         String sdpMid = data["iceCandidate"]["id"];
         int sdpMLineIndex = data["iceCandidate"]["label"];
@@ -159,8 +160,6 @@ class _CallScreenState extends State<CallScreen> {
 
       // set SDP offer as localDescription for peerConnection
       await _rtcPeerConnection!.setLocalDescription(offer);
-
-      // make a call to remote peer over signalling
       socket!.emit('makeCall', {
         "calleeId": widget.calleeId,
         "sdpOffer": offer.toMap(),
